@@ -1,0 +1,13 @@
+Workday API
+Community (Workday)
+Dialpad (no go)
+    -text, call, email out of app
+    -textrecruit (will not work for onboarding, also only texting)
+    -toolio???
+Want the option to be able to respond to text
+    -Recruiters do text back and forth
+    -Currently spread out
+Textrecruit contract ending soon
+Potentially feed info to Jason?
+BckgnChk
+Victig and Tracker already built
