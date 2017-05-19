@@ -1,0 +1,1 @@
+// Functional programming, solving simpler problems to solve complex ones.

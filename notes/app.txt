@@ -1,0 +1,203 @@
+App for onboaring sales 'personas'
+Salesperson persona.
+Have a recruitment opportunity, send out recruiting en masse almost 
+
+////////////////WORKDAY/////////////////////////
+
+-- When they are logging in, this data where is it stored? 
+* New credentials to possibly store on WDR.
+* Not a straightforward credential verification.
+Text link (this should be done in 5 minutes, on the phone)
+WDR is for analytics.
+How can we set up info through WDR?
+* Might just build our own system.
+-- Do we need to pipe data into WDR for analytics? What is the value of WDR? Can we not use it? 
+* SOAP is bad.
+* Cant get authentication.
+* How important is the data and analytics.
+* -- DEAD How does ICIMS integrate with everything else in accordance to login info? DEAD
+* * Potentially use solar user. Create temporary users that can expire.
+* * Solar users are easy and we can just push them to workday.
+> MEETING Meet with Ben to make sure we can get him the info he needs.
+-- How are the documents signed? Whats legal for us to do regarding signing? 
+> MEETING Whats legal regarding signing? Do we need Docusign with this?
+
+This should be a build that can grow and add additional personas and job types.
+
+
+-- Docusign integrations? Do we have to go to a different site to sign everything? 
+> SOLVED Plan our own
+* ICIMS integrations/possible WDR integrations
+* This is a potential thing to cut in first release and then integrate later
+
+-- How are we building the MVC?
+* Lauren has her own view of MVC, should we just make our own?
+* Managing expectations. Is there a way to finish everything they want? Yes, is it insane? Yes.
+
+-- What are we going to prioritize? Priority list.
+* Text integration to talk about later.
+
+-- Flowcharts for project?
+> MEETING Aaron needs to get on and get access to Lucidchart
+* Lucidchart
+
+
+
+ICIMS current role is not just hire and fire of employees, they can also have prebuilt templates.
+Keep icims separate from WDR and our individual systems.
+
+If we have to, we can use their apis to make a job then call their apis to get the info to sync and make a new job.
+Workday is hired individuals.
+
+-- SVG Animation as a component? 
+> SOLVED Jon would be dropping this in as a component SVG, pass in values with animations based on values.
+-- How is HR creating these documents. Do we get constructed DOM of documents, just the data, a pdf?
+> MEETING How does HR plan on sharing the documents?
+
+-- How are the Victig and Tracker APIs set up? 
+> SOLVED Preset up by Cameron and Jason. 
+
+/////////////////MANAGEMENT PERSONA///////////////////////
+-- When are we getting the UI mockups.
+
+Sales manager (DM)
+* List view of candidates. Different status categories, icons near with the flow. Quick visually accessible info
+  send a message, time since offer sent. 
+* Upper levels can see all below them inside their range of 'power'. And also see statistics and other things.
+-- Is this third persona or part of the second persona. 
+> SOLVED This is already in workday. We need to access this. ( ORGANIZATIONS )
+> SOLVED Ask Jon for access?
+
+Grab org information to determine view. That way Nic cant see potential hires for HR or Sales.
+!-- Is this for just sales or for the whole company? How do we tuck this in? What are they using right now? Can
+   implement new features for our app over a longer time period?
+> SOLVED Lauren Wednesday meeting to ask.
+-- If the admin is managing all the jobs out there, would it be better to actually use WDR? 
+Were only building two systems, with a separate API.
+ Our API will just manage data.
+
+ ////////////////////PART 2 -- DEEP DIVE I////////////////////////
+ * WILL EVENTUALLY NEED ACCESS TO AWS
+ This is currently stored in elastic beanstalk.
+ Cloudfront?
+ Cloudfront/S3/
+// Webhooks
+HR
+Ask for jenkins to pull in on okta dashboard.  
+> Talk to somebody in devops support to get permissions.
+
+-- Can we map out architecture in the docs?
+> SOLVED Jon is okay jumping into it.
+> SOLVED Process and systems flow chart will be contstructed by Aaron.
+> SOLVED Include a runbook that displays steps on how to solve problems encountered.
+
+ -- What is the JSON object that we have on AWS???
+
+ -- Where in S3 are our buckets?
+
+
+////////////////////KEY POINTS//////////////////////////////
+
+* What are they using right now?
+* Can we implement new features over a longer time period? YES
+* Will we still use tracker? Otherwise it has to go.
+
+* UI mocks?
+
+* Number of personas?
+
+* Where are our S3 buckets?
+
+
+  
+/////////////////////DEEP DIVE PART I-PART II/////////////////
+
+CloudFront and AWS (S3 with a pipe to CloudFront)
+Five minute pushes.
+
+
+WDR is for corporate and install personas, job requisitions.
+
+Still need to build a process chart. Sales manager process creates job and the offers via hr they 
+dont want to use wdr the normal process for coroporate and for installers they first create posistion in 
+workday and then create the job in wdr. Then they use hotrod for document signing and prehire processing.
+ And all the data is copied back to workday.
+
+ Were building two systems.
+
+ We need a data layer that stores all the data and interacts with hotrod.
+
+> Cant we just use hotrod instead of WDR?
+
+> Do we need to interact with the offer docs?
+
+NO Do they sign the offer on our app?
+
+> Can we simplify offers? Can we create a unique offer system?
+
+> Do we pipe information over to WDR for analytics?
+
+> Recruiting and onboarding in one place?
+
+> POST requests?
+
+>>> Cancel requests?
+
+> Have to see who admin is logging in as. Ping WD.
+
+
+Admin UI is kinda blurry. 
+
+Admin logs into HR API which checks Workday for who they are in charge of. Admin can also send offers ( sales ).
+
+> Where will we store our docs? ElasticSearch will store all the stuff.
+
+>>>> Where is sensitive info stored? Are they just signing docs?
+
+SCRUM
+
+
+-- How are the documents signed? Whats legal for us to do regarding signing?
+> SOLVED Plan our own
+
+* UI mocks?
+
+
+
+>>>> Do candidates fill in personal information in our app? "We know that sales candidates will fill in personal 
+info. Will corporate installs fill in their information? Where do those candidates start in our app? What has 
+already been completed in our app?"
+
+!> All personal information will be in WD for install/coroporate.
+
+-- Not all tasks will be available for all people. 
+
+> Legal and signature?
+
+> Frank should have in the next few weeks of the finalized view of the skeleton.
+
+>>>>Just corporate, installs, sales?
+
+>> Corporate has 200 different postions.
+>> This is going to be based on state with positions.
+
+Potentially a third persona. Could be tucked inside admin view. This is tucked inside only sales. Have the 
+ability to step in as overlord use (masquerade) permissions from others. This is still in the dark. We're not
+fully certain whats going to be here.  
+
+!> Thats it, no more roles. 
+
+!> Ability to implement more roles?
+
+Frank! Hes working hard on it!
+Michael was supposed to send the mobile.
+
+Picking wireframe apart with legal. 
+
+Meeting with google. Following cos rules.
+Tyler is the point of contact with google. 
+Support portal and dev console.
+
+How to Proces Large data sets
+
+Solution - Bluebird map concurrency
