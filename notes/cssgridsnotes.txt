@@ -1,0 +1,66 @@
+//Default
+.grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 20px;
+}
+Grid by Example.
+.grid {
+display: grid;
+grid-template-columns: 200px 200px 200px;
+grid-template-rows: 200px 100px;
+grid-auto-rows: 100px;
+grid-column-gap: 20px;
+grid-row-gap: 20px;
+grid-gap: 20px; // does the 2 above.
+}
+
+The fr unit. 
+
+.grid{
+    display: grid;
+    grid-template-columns: 2fr 1fr 200px; // this accomadates fractional widths. Space shared 
+    grid-gap: 20px;
+}
+
+I like this. A lot. Media queries. Good! 
+
+.grid{
+    display: grid;
+    grid-template-columns: 100px repeat(2, 1fr 2fr);
+    grid-gap: 20px;
+}
+
+
+
+.grid{
+    display: grid;
+    grid-template-columns: minmax(200px, 250px) 1fr 1fr;
+    grid-gap: 20px;
+    grid-auto-rows: minmax(60px, auto);
+}
+
+.grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 100px);
+    grid-gap: 20px;
+    grid-auto-flow: column; //can instead use flow
+}
+.grid div {
+    order: 3;
+}
+.grid div:nth-child(2){
+    order: 1;
+}
+
+.grid div:nth-child(4){
+    order: 2;
+}
+
+
+.grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+} 

@@ -1,0 +1,194 @@
+CSS is Declarative. Editor Inheritance is the norm. This leads to duplication errors.
+
+Init/Reset stylesheets are common. They set everything to zero.
+
+Basic css repeats colors over and over. We want to repeat code less. We want to make 
+this functional.
+
+Wow CSS is terrible. 
+
+I dont like LESS. Its meh.
+
+Its basically key/value pairs. It gets a bit blurry. These declaractions and assignments are as constants. 
+    So I can do manipulations with it but not change it. They are 'const' values. I feel like puking. 
+
+This is fun.
+ 
+Syntatically awesome style sheets.
+
+Sass has two syntaxes. Sass and scss.
+
+Indents matters in sass. We will be using scss.
+Looks and feels like css. 
+
+There is support for server side scss. 
+Can install sass and then require it. We need to use render to make it work though.
+
+Variable in scss. 
+
+$myColor: #ffeedd;
+
+$a: Black;
+$b: 4px;
+$d: Helvetica, sans-serif.
+$e: 1px #000 solid;
+font-size: 4px + 4; //8px
+font-size: 20px *.8 works; // works
+
+Order of operations preserved.
+
+There are color functions as well. 
+
+color: lighten($color, 10%);
+color: fade_in($color, 10%); //opacity
+
+$quoted: quote($sometext);
+
+$value: if(true, $color1, $color2);
+
+Round, ceil, floor, percentage all work.
+
+$root: "images/";
+
+#form { 
+    background: url("#{$root}background.jpg");
+    // becomes url("/images/background.jpg");
+}
+
+$name: "my-class";
+
+.#{$name}{
+    color: Blue;
+    //sets up class rules
+}
+
+$mainColor: Black; // allows for lots of stuff, can replace Black with $mainColor;
+
+injects the variable. Hooray! Fixes magic strings!
+
+$baseFontSize: 14px; 
+font-size: $baseFontSize; // Hooray! Fixes stuff!
+font-size: $baseFontSize + 2; // Works! 
+
+Usually this is going to be cached on the server.
+
+background: lighten($mainColor, 20%); // Hey it lightens our stuff!
+
+Interpolation in scss! 
+
+$rootPath: "http://localhost:8000/";
+background-image: url("#{$rootPath}images/back.jpg"); // Hey we can embed this!
+$baseClassName: "col";
+
+.#{$baseClassName}1{
+    font-size: $baseFontSize;
+}
+.#{$baseClassName}1{
+    font-size: $baseFontSize;
+}
+
+nav{
+    font-size: 14px;
+    font-weight: bold;
+    float: right;
+    ul { // Makes "nav ul {...}
+        list-style-type: none;
+        li { // makes "Nav ul li {...}
+            float: left;
+            margin: 2px;
+        }
+    }
+}
+
+Allow parent selected.
+
+a{
+    text-decoration: none;
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+Can nest properties as well.
+
+.button{
+    font: {
+        family: Verdana, Helvetica, sans-serif;
+        size: 14px;
+    }
+}
+
+Allows us to break up the dashes! horray!
+
+I like this!
+
+Ampersand sticks it to the parent!!!!! I like it!
+
+Directives!
+Allow for operations on the css. These look like
+@import
+@extend
+@mixin
+@functional
+
+@import allows us to stick things in where we want it!
+
+@import "foo.css";
+
+@import "foo.scss";
+@import "foo"; // This works as well
+
+Importing scss as opposed to css is better for server side since you dont have to import every time you check.
+This is good.
+
+@extend allows for inheritance.
+
+.button{
+    color: black;
+}
+
+.submit-button{
+    @extend .button;
+    border: 1px Black solid;
+}
+
+@mixins create repeatable sections that feel like functions. 
+Can be called with or without parameters.
+@mixing font-large {
+    font: {
+        size: 14px;
+        family: sans-serif;
+        weight: bold;
+    }
+}
+
+#form {
+    @include font-large;
+}
+
+@mixin round-corners-all($size: 5px){
+    border-radius: $size;
+    -webkit-border-radius: $size;
+    -moz-border-radius: $size;
+}
+
+#form {
+    @include rounded-corners-all(5px);
+}
+
+@function creates standard code
+
+$app-width: 900px;
+@function column-width($cols){
+    @return ($app-width / $cols) - ($cols * 5px);
+}
+
+.col2 {
+    width: column-width(2);
+}
+
+.col3 {
+    width: column-width(3);
+}
+
+You can loop using @for, @each, and @while
